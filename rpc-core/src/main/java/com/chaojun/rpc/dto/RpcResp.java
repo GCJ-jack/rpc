@@ -1,5 +1,6 @@
 package com.chaojun.rpc.dto;
 
+import com.chaojun.rpc.enums.RpcRespStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,11 +31,12 @@ public class RpcResp<T> implements Serializable {
         return resp;
     }
 
-    public static <T> RpcResp<T> fail(String reqId){
+    public static <T> RpcResp<T> fail(String reqId, String msg){
         RpcResp<T> resp = new RpcResp<T>();
 
         resp.setReqId(reqId);
-        resp.setCode(0);
+        resp.setCode(RpcRespStatus.FAIL.getCode());
+        resp.setMsg(msg);
 
         return resp;
     }
