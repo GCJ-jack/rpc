@@ -25,4 +25,13 @@
 <!--            <scope>test</scope>-->
 <!--        </dependency>-->
 <!--    </dependencies>-->
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.chaojun</groupId>
+            <artifactId>test-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 </project>
