@@ -16,14 +16,24 @@
 
 
     <properties>
-        <java.version>1.8</java.version>
+        <!-- 可保留一个业务用的版本号占位 -->
+        <java.version>23</java.version>
+
+        <!-- 编译参数更推荐用 release，而不是 source/target -->
+        <maven.compiler.release>23</maven.compiler.release>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <lombok.version>1.18.22</lombok.version>
+
+        <!-- 升级 Lombok，老版本(1.18.22)对新 JDK 兼容性差 -->
+        <lombok.version>1.18.34</lombok.version>  <!-- 或更高的最新稳定版 -->
+
+        <!-- 这些库版本与JDK无强绑定，可先不动；后续再按需升级 -->
         <hutool.version>5.7.22</hutool.version>
-        <logback.version>1.3.14</logback.version>
-        <netty.version>4.1.77.Final</netty.version>
+        <logback.version>1.3.14</logback.version>  <!-- 建议后续考虑 1.5.x 系列 -->
+        <netty.version>4.1.77.Final</netty.version> <!-- 可运行，但版本较旧 -->
     </properties>
+
 
     <dependencies>
         <dependency>
@@ -66,6 +76,11 @@
                 <groupId>com.chaojun</groupId>
                 <artifactId>test-api</artifactId>
                 <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.chaojun</groupId>
+                <artifactId>rpc-core</artifactId>
+                <version>1.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

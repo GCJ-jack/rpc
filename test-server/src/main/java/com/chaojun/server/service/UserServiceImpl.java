@@ -1,4 +1,4 @@
-package com.chaojun.server;
+package com.chaojun.server.service;
 
 import cn.hutool.core.util.IdUtil;
 import com.chaojun.api.User;
