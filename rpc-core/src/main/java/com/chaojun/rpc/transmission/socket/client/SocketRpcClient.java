@@ -20,6 +20,7 @@ public class SocketRpcClient implements RpcClient {
         this.host = host;
         this.port = port;
     }
+
     @Override
     public RpcResp<?> sendReq(RpcReq rpcReq) {
 

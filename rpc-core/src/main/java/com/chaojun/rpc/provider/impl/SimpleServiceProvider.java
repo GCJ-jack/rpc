@@ -28,6 +28,11 @@ public class SimpleServiceProvider implements ServiceProvier {
         interfaceList.forEach(rpcServiceName -> SERVICE_CACHE.put(
                 rpcServiceName,rpcServiceConfig.getService()
         ));
+
+        for(Map.Entry<String,Object> entry:SERVICE_CACHE.entrySet()){
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+        }
     }
 
     @Override
@@ -38,6 +43,5 @@ public class SimpleServiceProvider implements ServiceProvier {
 
         return SERVICE_CACHE.get(rpcServiceName);
     }
-
 
 }
