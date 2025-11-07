@@ -1,5 +1,6 @@
 package com.chaojun.rpc.dto;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +24,8 @@ public class RpcReq implements Serializable {
 
 
     public String rpcServiceName(){
-        return getInterfaceName() + getVersion() + getGroup();
+//        return getInterfaceName() + getVersion() + getGroup();
+
+        return StrUtil.blankToDefault(getInterfaceName(),StrUtil.EMPTY) + StrUtil.blankToDefault(getVersion(),StrUtil.EMPTY) + StrUtil.blankToDefault(getGroup(),StrUtil.EMPTY);
     }
 }

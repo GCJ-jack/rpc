@@ -6,11 +6,11 @@ import com.chaojun.rpc.dto.RpcResp;
 import com.chaojun.rpc.provider.ServiceProvier;
 import com.chaojun.rpc.provider.impl.SimpleServiceProvider;
 import com.chaojun.rpc.transmission.RpcServer;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -58,16 +58,14 @@ public class SocketRpcServer implements RpcServer {
         serviceProvier.publishService(rpcServiceConfig);
     }
 
-    @SneakyThrows
-    private Object invoke(RpcReq rpcReq){
+    private Object invoke(RpcReq rpcReq) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         String rpcServiceProvider = rpcReq.rpcServiceName();
         Object service = serviceProvier.getService(rpcServiceProvider);
 
-        log.info("getting the service {} ", service.getClass().getAnnotations());
+        log.info("getting the service {} ", (Object) service.getClass().getAnnotations());
 
         Method method = service.getClass().getDeclaredMethod(rpcReq.getMethodName(),
                 rpcReq.getParamTypes());
-
 
         return method.invoke(service, rpcReq.getParams());
     }
