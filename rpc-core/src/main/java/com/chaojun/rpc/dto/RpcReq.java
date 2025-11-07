@@ -20,4 +20,9 @@ public class RpcReq implements Serializable {
     private Class<?>[] paramTypes;
     private String version;
     private String group;
+
+
+    public String rpcServiceName(){
+        return getInterfaceName() + getVersion() + getGroup();
+    }
 }
