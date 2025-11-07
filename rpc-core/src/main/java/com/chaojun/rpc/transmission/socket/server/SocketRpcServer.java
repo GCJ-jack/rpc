@@ -40,10 +40,11 @@ public class SocketRpcServer implements RpcServer {
                 RpcReq rpcReq = (RpcReq) inputStream.readObject();
                 System.out.println(rpcReq);
 
-                String data = "sdsafafaf";
+
+                Object data = invoke(rpcReq);
 
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-                RpcResp<String> rpcResp = RpcResp.success(rpcReq.getReqID(),data);
+                RpcResp<?> rpcResp = RpcResp.success(rpcReq.getReqID(),data);
                 objectOutputStream.writeObject(rpcResp);
                 objectOutputStream.flush();
             }
